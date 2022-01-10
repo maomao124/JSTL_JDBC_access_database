@@ -8,9 +8,10 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
 <br/>
 <br/>
-<a href="hello.jsp">进入程序</a><br/>
+<h2>
+    <a href="hello.jsp">进入程序</a><br/>
+</h2>
 </body>
 </html>

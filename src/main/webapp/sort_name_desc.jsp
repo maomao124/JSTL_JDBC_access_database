@@ -51,7 +51,9 @@ startRow：开始查询的行数。
     <br/>
     <br/>
     <br/>
-    <a href="index1.jsp">返回</a><br/>
+    <a href="sort.jsp">返回到上一级</a>
+    <br/>
+    <a href="index1.jsp">返回到主菜单</a><br/>
 </h2>
 </body>
 </html>
