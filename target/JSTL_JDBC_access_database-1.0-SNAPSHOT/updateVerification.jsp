@@ -4,16 +4,16 @@
   Author(作者）: mao
   Author QQ：1296193245
   GitHub：https://github.com/maomao124/
-  Date(创建日期)： 2022/1/9
-  Time(创建时间)： 22:59
-  Description(描述)： 插入
+  Date(创建日期)： 2022/1/10
+  Time(创建时间)： 13:32
+  Description(描述)： 无
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix="sql" %>
 <html>
 <head>
-    <title>插入结果</title>
+    <title>Title</title>
 </head>
 <body>
 <%
@@ -100,42 +100,14 @@
         //response.sendRedirect("error.jsp");
         request.getRequestDispatcher("error.jsp").forward(request, response);
     }
-
 %>
-学号：
-<c:out value="<%=no%>" escapeXml="true" default="null"/>
-<br/>
-姓名：
-<c:out value="<%=name%>" escapeXml="true" default="null"/>
-<br/>
-性别：
-<c:out value="<%=sex%>" escapeXml="true" default="null"/>
-<br/>
-年龄：
-<c:out value="<%=age%>" escapeXml="true" default="null"/>
-<br/>
-<br/>
-
-<c:catch var="error">
-    <%--
-var：用来存储所影响行数的变量；
-dataSource：连接的数据源；
-scope：设定参数 var 的有效范围，默认为 page；
-sql：更新的 SQL 语句，可以是 INSERT、UPDATE、DELETE 语句。
+<%--
+<%=no%>
+<%=name%>
+<%=sex%>
+<%=age%>
 --%>
-    <sql:update dataSource="${sessionScope.student}" var="result">
-        insert into information values(<%=no%>,'<%=name%>','<%=sex%>',<%=age%>);
-    </sql:update>
-</c:catch>
-<c:if test="${error!=null}">
-    <c:set var="errormessage" value="${error.message}" scope="session"/>
-    <%
-        session.setAttribute("message", "插入异常，插入失败！ 错误内容：" + session.getAttribute("errormessage"));
-        request.getRequestDispatcher("error.jsp").forward(request, response);
-    %>
-</c:if>
 
-插入后的数据：
 <%--
 var：代表SQL查询的结果；
 dataSource：连接的数据源；
@@ -148,6 +120,28 @@ startRow：开始查询的行数。
     SELECT * FROM information;
 </sql:query>
 
+<c:catch var="error">
+    <%--
+    var：用来存储所影响行数的变量；
+    dataSource：连接的数据源；
+    scope：设定参数 var 的有效范围，默认为 page；
+    sql：更新的 SQL 语句，可以是 INSERT、UPDATE、DELETE 语句。
+    --%>
+    <sql:update dataSource="${sessionScope.student}" var="result1">
+        update information set no=<%=no%>,name='<%=name%>',sex='<%=sex%>',age=<%=age%> where no=${sessionScope.update_no}
+    </sql:update>
+</c:catch>
+<c:if test="${error!=null}">
+    <c:set var="errormessage" value="${error.message}" scope="session"/>
+    <%
+        session.setAttribute("message", "修改异常，修改失败！ 错误内容：" + session.getAttribute("errormessage"));
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
+
+修改前的表：
+<br/>
+<br/>
 <table border="1">
     <tr>
         <th>学号</th>
@@ -164,8 +158,44 @@ startRow：开始查询的行数。
         </tr>
     </c:forEach>
 </table>
+
+<br/>
+<br/>
+<br/>
+修改后的表：
+<br/>
+<%--
+var：代表SQL查询的结果；
+dataSource：连接的数据源；
+maxRows：设置最多可存放的记录条数；
+scope：设定参数 var 的有效范围，默认为 page；
+sql：查询的 SQL 语句；
+startRow：开始查询的行数。
+--%>
+<sql:query var="result" dataSource="${sessionScope.student}">
+    SELECT * FROM information;
+</sql:query>
+<table border="1">
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>年龄</th>
+    </tr>
+    <c:forEach var="row" items="${result.rows}">
+        <tr>
+            <td><c:out value="${row.no}"/></td>
+            <td><c:out value="${row.name}"/></td>
+            <td><c:out value="${row.sex}"/></td>
+            <td><c:out value="${row.age}"/></td>
+        </tr>
+    </c:forEach>
+</table>
+
+<br/>
 <br/>
 <br/>
 <a href="index1.jsp">返回</a><br/>
+
 </body>
 </html>
