@@ -86,24 +86,26 @@ startRow：开始查询的行数。
 <br/>
 <br/>
 <br/>
-请输入新的内容：
-<br/>
-<br/>
-<form action="updateVerification.jsp" method="post">
-    学号：
-    <input type="text" name="no" value="${no}"/><br/>
-    姓名：
-    <input type="text" name="name" value="${name}"/><br/>
-    性别：
-    <input type="text" name="sex" value="${sex}"/><br/>
-    年龄：
-    <input type="text" name="age" value="${age}"/><br/>
+<c:if test="${count!=0}">
+    请输入新的内容：
     <br/>
-    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-    &nbsp&nbsp&nbsp&nbsp&nbsp
-    <input type="submit" value="确认"/>
     <br/>
-</form>
+    <form action="updateVerification.jsp" method="post">
+        学号：
+        <input type="text" name="no" value="${no}"/><br/>
+        姓名：
+        <input type="text" name="name" value="${name}"/><br/>
+        性别：
+        <input type="text" name="sex" value="${sex}"/><br/>
+        年龄：
+        <input type="text" name="age" value="${age}"/><br/>
+        <br/>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        &nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type="submit" value="确认"/>
+        <br/>
+    </form>
+</c:if>
 <br/>
 <br/>
 <br/>

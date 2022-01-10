@@ -27,7 +27,7 @@ startRow：开始查询的行数。
 <sql:query var="result" dataSource="${sessionScope.student}">
     SELECT * FROM information;
 </sql:query>
-
+<%int count = 0;%>
 <h2>
     <table border="1">
         <tr>
@@ -42,9 +42,13 @@ startRow：开始查询的行数。
                 <td><c:out value="${row.name}"/></td>
                 <td><c:out value="${row.sex}"/></td>
                 <td><c:out value="${row.age}"/></td>
+                <%count++;%>
             </tr>
         </c:forEach>
     </table>
+    <br/>
+    一共<%=count%>名学生
+    <br/>
     <br/>
     <br/>
     <a href="index1.jsp">返回</a><br/>

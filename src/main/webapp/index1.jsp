@@ -21,8 +21,9 @@
     <a href="select.jsp">查询</a><br/>
     <a href="insert_input.jsp">插入</a><br/>
     <a href="update_input.jsp">修改</a><br/>
+    <a href="delete_input.jsp">删除</a><br/>
+    <a href="search_input.jsp">查找</a><br/>
     <br/>
-
 </h2>
 <h3>
     <a href="index.jsp">返回到主菜单</a><br/>
