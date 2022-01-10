@@ -17,6 +17,20 @@
     <title>查找</title>
 </head>
 <body>
+
+<c:if test="${sessionScope.pass==null}">
+    <%
+        session.setAttribute("message", "请先登录!");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
+<c:if test="${sessionScope.pass!=1}">
+    <%
+        session.setAttribute("message", "请先登录!");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
+
 <%
     request.setCharacterEncoding("utf-8");
     String search_key;

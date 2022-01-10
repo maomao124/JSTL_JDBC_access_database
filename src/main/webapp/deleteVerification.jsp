@@ -16,6 +16,20 @@
     <title>删除</title>
 </head>
 <body>
+
+<c:if test="${sessionScope.pass==null}">
+    <%
+        session.setAttribute("message", "请先登录!");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
+<c:if test="${sessionScope.pass!=1}">
+    <%
+        session.setAttribute("message", "请先登录!");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
+
 删除前：
 <br/>
 <%--
