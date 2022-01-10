@@ -43,6 +43,27 @@ scope：设定参数 var 的有效范围，默认为 page
 <sql:setDataSource var="student" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/student"
                    user="<%=username%>" password="<%=password%>" scope="session"/>
 
+
+<c:catch var="error">
+    <%--
+var：代表SQL查询的结果；
+dataSource：连接的数据源；
+maxRows：设置最多可存放的记录条数；
+scope：设定参数 var 的有效范围，默认为 page；
+sql：查询的 SQL 语句；
+startRow：开始查询的行数。
+--%>
+    <sql:query var="result" dataSource="${student}">
+        SELECT * FROM information;
+    </sql:query>
+</c:catch>
+<c:if test="${error!=null}">
+    <%
+        session.setAttribute("message", "用户名或者密码错误！或者其它错误");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
+
 <jsp:forward page="index1.jsp" />
 </body>
 </html>

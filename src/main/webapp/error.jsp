@@ -20,13 +20,18 @@
     <br>
     错误内容：
     <%
+        String back = "index1.jsp";
         request.setCharacterEncoding("utf-8");
         String message = (String) session.getAttribute("message");
+        if (message.equals("用户名或者密码错误！或者其它错误"))
+        {
+            back = "index.jsp";
+        }
     %>
     <c:out value="<%=message%>" escapeXml="true" default="null"/>
 </h2>
 <br/>
 <br/>
-<a href="index1.jsp">返回</a><br/>
+<a href="<%=back%>">返回</a><br/>
 </body>
 </html>
