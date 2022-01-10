@@ -116,15 +116,24 @@
 <br/>
 <br/>
 
-<%--
+<c:catch var="error">
+    <%--
 var：用来存储所影响行数的变量；
 dataSource：连接的数据源；
 scope：设定参数 var 的有效范围，默认为 page；
 sql：更新的 SQL 语句，可以是 INSERT、UPDATE、DELETE 语句。
 --%>
-<sql:update dataSource="${sessionScope.student}" var="result">
-    insert into information values(<%=no%>,'<%=name%>','<%=sex%>',<%=age%>);
-</sql:update>
+    <sql:update dataSource="${sessionScope.student}" var="result">
+        insert into information values(<%=no%>,'<%=name%>','<%=sex%>',<%=age%>);
+    </sql:update>
+</c:catch>
+<c:if test="${error!=null}">
+    <c:set var="errormessage" value="${error.message}" scope="session"/>
+    <%
+        session.setAttribute("message", "插入异常，插入失败！ 错误内容：" + session.getAttribute("errormessage"));
+        request.getRequestDispatcher("error.jsp").forward(request, response);
+    %>
+</c:if>
 
 插入后的数据：
 <%--
