@@ -23,6 +23,7 @@
     <a href="update_input.jsp">修改</a><br/>
     <a href="delete_input.jsp">删除</a><br/>
     <a href="search_input.jsp">查找</a><br/>
+    <a href="sort.jsp">排序</a><br/>
     <br/>
 </h2>
 <h3>
