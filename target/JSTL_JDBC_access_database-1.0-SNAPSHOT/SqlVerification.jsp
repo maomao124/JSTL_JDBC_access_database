@@ -63,7 +63,8 @@ startRow：开始查询的行数。
         request.getRequestDispatcher("error.jsp").forward(request, response);
     %>
 </c:if>
-
+<%int i=0;%>
+<c:set var="pass" value="<%=i%>" scope="session"/>
 <jsp:forward page="index1.jsp" />
 </body>
 </html>

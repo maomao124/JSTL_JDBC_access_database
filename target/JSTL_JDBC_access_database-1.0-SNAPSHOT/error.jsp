@@ -27,6 +27,10 @@
         {
             back = "index.jsp";
         }
+        else if (message.equals("请先登录!"))
+        {
+            back = "index.jsp";
+        }
     %>
     <c:out value="<%=message%>" escapeXml="true" default="null"/>
 </h2>
