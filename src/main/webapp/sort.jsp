@@ -19,6 +19,15 @@
     <br/>
     <a href="sort_no_asc.jsp">按学号升序</a><br/>
     <a href="sort_no_desc.jsp">按学号降序</a><br/>
+    <a href="sort_name_asc.jsp">按名字升序</a><br/>
+    <a href="sort_name_desc.jsp">按名字降序</a><br/>
+    <a href="sort_sex_asc.jsp">按性别升序</a><br/>
+    <a href="sort_sex_desc.jsp">按性别降序</a><br/>
+    <a href="sort_age_asc.jsp">按学年龄升序</a><br/>
+    <a href="sort_age_desc.jsp">按学年龄降序</a><br/>
+    <br/>
+    <br/>
+    <a href="index1.jsp">返回</a>
 </h2>
 </body>
 </html>
